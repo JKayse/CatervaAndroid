@@ -1,0 +1,76 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d8f4ff"
+    >
+
+   <ImageView
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:src="@drawable/flock_mobile_image" 
+       android:id="@+id/icon"
+       android:layout_centerHorizontal="true"/>
+
+   <EditText
+        android:id="@+id/username_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/username_placeholder"
+        android:layout_below="@+id/icon"
+        android:layout_centerHorizontal="true"
+	   android:layout_marginRight="20dp"
+	   android:layout_marginLeft="20dp"
+	   android:layout_marginTop="10dp"
+        >
+   </EditText>
+
+   <EditText
+       android:id="@+id/password_placeholder"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"      
+       android:hint="@string/password_placeholder"
+       android:inputType="textPassword"
+	   android:layout_centerHorizontal="true"
+	   android:layout_below="@+id/username_placeholder"
+	   android:layout_marginRight="20dp"
+	   android:layout_marginLeft="20dp"
+	   ></EditText>
+   
+   
+  
+   <Button
+       android:id="@+id/login_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/login_button" 
+       android:layout_below="@+id/password_placeholder"
+       android:layout_alignStart="@+id/password_placeholder"
+       android:layout_centerHorizontal="true"
+       android:onClick="loginAttempt"
+      ></Button>
+   
+   
+  
+   
+      <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/join_text" 
+       android:id="@+id/join_text"
+       android:layout_above="@+id/register_button"
+       android:layout_centerHorizontal="true"
+       />
+      
+       <Button
+       android:id="@+id/register_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/register_button" 
+       android:layout_centerHorizontal="true"
+       android:layout_alignParentBottom="true"
+       android:onClick="registerNew"
+      ></Button>
+  
+    
+</RelativeLayout>

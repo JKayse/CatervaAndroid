@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Flock</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="password_placeholder">Password</string>
+    <string name="username_placeholder">Username</string>
+    <string name="login_button">Log In</string>
+    <string name="title_activity_application_main">Application_main</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_add_friend">AddFriend</string>
+    <string name="title_activity_events">Events</string>
+    <string name="register_button">Register</string>
+    <string name="join_text">New to Flock?</string>
+    <string name="icon">icon</string>
+    <string name="registration_page_header">Registration Page</string>
+    <string name="new_username">User Name</string>
+    <string name="new_first_name">First Name</string>
+    <string name="new_last_name">Last Name</string>
+    <string name="new_email">Email</string>
+    <string name="new_password">Password</string>
+    <string name="new_password_confirm">Confirm Password</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="events_button">Events</string>
+    <string name="friends_button">Friends</string>
+    <string name="groups_button">Groups</string>
+    <string name="add_friends_button">Add Friends</string>
+    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_friends">Friends</string>
+
+</resources>
