@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MergeRootFrame"
+    android:background="#d8f4ff">
+    
+	<TextView
+	    android:id="@+id/eventName"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    android:text="Camping"
+	    android:paddingTop="15dp"
+	    android:textSize="25sp"
+	    android:paddingLeft="15dp" />
+	
+	<TextView
+	    android:id="@+id/host"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/eventName"
+	    android:text="Hosted By: Jordan Kayse"
+	    android:paddingTop="10dp"
+	    android:textSize="20sp"
+	    android:paddingLeft="15dp" />
+	
+	<TextView
+	    android:id="@+id/startDate"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/host"
+	    android:text="Start: 04/12/2014"
+	    android:paddingTop="10dp"
+	    android:textSize="20sp"
+	    android:paddingLeft="15dp" />
+	<TextView
+	    android:id="@+id/startTime"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/startDate"
+	    android:layout_below="@id/host"
+	    android:text="03:45 PM"
+	    android:paddingTop="10dp"
+	    android:textSize="20sp"
+	    android:paddingLeft="15dp" />
+	
+	<TextView
+	    android:id="@+id/endDate"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/startDate"
+	    android:text="End: 04/12/2014"
+	    android:paddingTop="10dp"
+	    android:textSize="20sp"
+	    android:paddingLeft="15dp" />
+	<TextView
+	    android:id="@+id/endTime"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/endDate"
+	    android:layout_below="@id/startDate"
+	    android:text="03:45 PM"
+	    android:paddingTop="10dp"
+	    android:textSize="20sp"
+	    android:paddingLeft="15dp" />
+	<TextView
+	    android:id="@+id/descriptionName"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/endDate"
+	    android:text="Description:"
+	    android:paddingTop="10dp"
+	    android:textSize="20sp"
+	    android:paddingLeft="15dp" />
+	<TextView
+	    android:id="@+id/description"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/descriptionName"
+	    android:text="This is the event"
+	    android:background="@drawable/item_rectangle"
+	    android:paddingTop="10dp"
+	    android:textSize="20sp"
+	    android:paddingLeft="15dp" 
+	    android:paddingRight="15dp"
+	    android:layout_marginRight="5dp"
+	    android:layout_marginLeft="5dp"
+	    android:layout_marginBottom="5dp"/>
+	
+	<ImageView 
+	    android:id="@+id/canceled"
+	    android:layout_width="match_parent"
+	    android:layout_height="60dp"
+	    android:layout_centerInParent="true"
+	    android:scaleType="fitXY"
+	    android:src="@drawable/canceled" />"
+	
+	
+
+</RelativeLayout>
