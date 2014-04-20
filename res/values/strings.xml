@@ -10,6 +10,7 @@
     <string name="title_activity_application_main">Application_main</string>
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_add_friend">AddFriend</string>
+    <string name="title_activity_event_info">Event Description</string>
     <string name="title_activity_events">Events</string>
     <string name="register_button">Register</string>
     <string name="join_text">New to Flock?</string>

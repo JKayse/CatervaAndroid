@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MergeRootFrame"
+    android:background="@drawable/item_rectangle"
+    android:layout_marginBottom="5dp">
+    
+    
+	<!-- Holds the image. -->
+	<ImageView 
+	    android:id="@+id/imageView"
+	    android:layout_width="75dp"
+	    android:layout_height="75dp"
+	    android:scaleType="fitXY"
+	    android:layout_alignParentLeft="true"
+	    android:src="@drawable/ic_launcher"/>
+	
+	<TextView
+	    android:id="@+id/eventName"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/imageView"
+	    android:layout_alignParentTop="true"
+	    android:text="Camping"
+	    android:paddingTop="10dp"
+	    android:textSize="18sp"
+	    android:paddingLeft="10dp" />
+	
+	<TextView
+	    android:id="@+id/eventStart"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_alignParentRight="true"
+	    android:text="04/03/2014"
+	    android:gravity="right"
+	    android:textSize="18sp"
+	    android:paddingTop="10dp"
+	    android:paddingRight="10dp" />
+	
+	<TextView
+	    android:id="@+id/eventHost"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/eventName"
+	    android:layout_toRightOf="@id/imageView"
+	    android:paddingLeft="10dp"
+	    android:textSize="18sp"
+	    android:paddingTop="10dp"
+	    android:text="Hosted by: Jordan Kayse" />
+	<ImageView 
+	    android:id="@+id/canceled"
+	    android:layout_width="match_parent"
+	    android:layout_height="60dp"
+	    android:scaleType="fitXY"
+	    android:paddingTop="10dp"
+	    android:layout_toRightOf="@id/imageView"
+	    android:src="@drawable/canceled"/>
+	
+	
+
+</RelativeLayout>
