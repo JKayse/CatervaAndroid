@@ -93,9 +93,12 @@ public class Events extends ActionBarActivity {
 					e2.printStackTrace();
 				}
 				connection.setRequestProperty("Accept", "application/json");
+
 				
-				//will eventually change the userid to the proper one.
-				String urlParameters = "userId=1";
+				UserData temp = UserData.getInstance();
+				Integer id = temp.getUserId();
+				String userid = id.toString();
+				String urlParameters = "userId="+userid;
 				try {
 					connection.getOutputStream().write(urlParameters.getBytes());
 				} catch (IOException e2) {
