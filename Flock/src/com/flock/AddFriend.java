@@ -19,6 +19,14 @@ public class AddFriend extends ActionBarActivity {
 		setContentView(R.layout.activity_add_friend);
 
 	}
+	
+	void nfcShare(){
+		
+	}
+	
+	void searchForName(){
+		
+	}
 
 
 }

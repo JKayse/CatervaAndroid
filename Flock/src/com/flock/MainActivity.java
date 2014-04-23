@@ -96,9 +96,9 @@ public class MainActivity extends ActionBarActivity {
 			try {
 				response = client.execute(post);
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
-			String responseString = "Sigh, nope";
+			String responseString = "";
 			HttpEntity temp = response.getEntity();
 			try {
 				responseString = EntityUtils.toString(temp);
@@ -113,8 +113,8 @@ public class MainActivity extends ActionBarActivity {
 		
 		@Override
 		protected void onPostExecute(String response) {
-			
-			if(response == "error_username_doesnt_exists"){
+
+			if(response.contentEquals("error_username_doesnt_exists") ){
 				
 				CharSequence text = "Login issue, please try again";
 				int duration = Toast.LENGTH_SHORT;
@@ -122,30 +122,27 @@ public class MainActivity extends ActionBarActivity {
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
 			} else {
+
 				JSONObject back = null;
 				try {
 					back = new JSONObject(response);
 				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+
 				}
 				String username = null;
 				try {
 					username = (String) back.get("Username");
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+
 				}
 				int ID = -8;
 				try {
 					ID  = (Integer) back.get("ID");
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+
 				}
 				
-				
-				
+			
 				
 				UserData temp = UserData.getInstance();
 		        temp.setUsername(username);

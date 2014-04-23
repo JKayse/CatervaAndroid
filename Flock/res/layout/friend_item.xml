@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MergeRootFrame"
+    android:background="@drawable/item_rectangle"
+    android:layout_marginBottom="5dp">
+    
+    
+	<!-- Holds the image. -->
+	<ImageView 
+	    android:id="@+id/friendPhoto"
+	    android:layout_width="75dp"
+	    android:layout_height="75dp"
+	    android:scaleType="fitXY"
+	    android:layout_alignParentLeft="true"
+	    android:src="@drawable/ic_launcher"/>
+	
+	<TextView
+	    android:id="@+id/friendname"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/friendPhoto"
+	    android:layout_centerVertical="true"
+	    android:text="place_holder_name"
+	    android:paddingTop="10dp"
+	    android:textSize="18sp"
+	    android:paddingLeft="10dp" />
+	
+	
+	
+
+</RelativeLayout>
