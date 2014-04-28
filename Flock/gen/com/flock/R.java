@@ -985,6 +985,7 @@ containing a value of this type.
         public static final int flock_mobile_image=0x7f020058;
         public static final int ic_launcher=0x7f020059;
         public static final int item_rectangle=0x7f02005a;
+        public static final int item_rectangle_list=0x7f02005b;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -998,7 +999,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050062;
+        public static final int action_settings=0x7f050063;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int add_friends_button=0x7f05003d;
         public static final int always=0x7f05000b;
@@ -1023,6 +1024,7 @@ containing a value of this type.
         public static final int events_button=0x7f05003e;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
+        public static final int friendName=0x7f050061;
         public static final int friendPhoto=0x7f05005f;
         public static final int friendname=0x7f050060;
         public static final int friends_button=0x7f05003f;
@@ -1030,7 +1032,7 @@ containing a value of this type.
         public static final int friends_progress=0x7f05004c;
         public static final int group_list=0x7f05004f;
         public static final int group_progress=0x7f05004e;
-        public static final int groupname=0x7f050061;
+        public static final int groupname=0x7f050062;
         public static final int groups_button=0x7f050040;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
@@ -1147,8 +1149,9 @@ containing a value of this type.
         public static final int event_item=0x7f03001f;
         public static final int fragment_main=0x7f030020;
         public static final int friend_item=0x7f030021;
-        public static final int group_item=0x7f030022;
-        public static final int support_simple_spinner_dropdown_item=0x7f030023;
+        public static final int group_friend_item=0x7f030022;
+        public static final int group_item=0x7f030023;
+        public static final int support_simple_spinner_dropdown_item=0x7f030024;
     }
     public static final class menu {
         public static final int add_friend=0x7f0c0000;

@@ -1,7 +1,13 @@
 package com.flock;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -16,28 +22,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.flock.Friends.getFriends;
-
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.os.Build;
 
 public class Groups extends ActionBarActivity {
 	String mainURL =  "http://54.200.98.199/flock/api/AndroidGroups";
 	getGroups task = null;
-	ListView list;
+	ExpandableListView list;
 	ProgressBar progress;
 
 	@Override
@@ -45,7 +43,7 @@ public class Groups extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_groups);
 		
-		list = (ListView) findViewById(R.id.group_list);
+		list = (ExpandableListView) findViewById(R.id.group_list);
 		progress = (ProgressBar) findViewById(R.id.group_progress);
 		task = new getGroups(this);
 	    task.execute(mainURL);
@@ -100,17 +98,84 @@ public class Groups extends ActionBarActivity {
 				Log.d("TGE", "Something wrong with JSON");
 			}
 			
-		Log.d("TGE", array.toString());
+			Log.d("TGE", array.toString());
 			
 			
 			Group [] stuff = new Group[array.length()];
 			String word = null;
 			
 			for(int i = 0; i< stuff.length ; i++){
-				
+				Friend[] friends = null;
 				stuff[i] = new Group();
 				try {
-					stuff[i].setName(   array.getJSONObject(i).getJSONObject("Group").getString("GroupName")    );
+					stuff[i].setName(array.getJSONObject(i).getJSONObject("Group").getString("GroupName"));
+					JSONArray users = array.getJSONObject(i).getJSONArray("Users");
+					friends = new Friend[users.length()];
+					for(int j=0; j < users.length(); j++){
+						friends[j] = new Friend();
+						String id = users.getJSONObject(j).getString("UserId");
+						String friend = null;
+						URL secondRequestURL = null;
+						//Opens up a connection.
+						try {
+							
+							secondRequestURL = new URL("http://54.200.98.199/flock/api/UserInfo/" + id );
+						} catch (MalformedURLException e) {
+							Log.e("JLK", "URL is bad");
+							e.printStackTrace();
+						}
+						HttpURLConnection secondConnection = null;
+						try {
+							
+							secondConnection = (HttpURLConnection) secondRequestURL.openConnection();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						secondConnection.setReadTimeout(10000);
+						secondConnection.setConnectTimeout(15000);
+						
+						int secondStatus = 0;
+						try {
+							secondStatus = secondConnection.getResponseCode();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						if(secondStatus == HttpURLConnection.HTTP_UNAUTHORIZED){
+							Log.d("JLK", "No authorization");
+						}
+						else if(secondStatus != HttpURLConnection.HTTP_OK){
+							Log.d("JLK", "Status code: " + secondStatus);
+						}
+						else{
+							//Gets all the data from the connection and saves it in a string.
+							InputStream stream = null;
+							try {
+								stream = secondConnection.getInputStream();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							Scanner scanner = new Scanner(stream);
+							
+							String jsonresults = scanner.useDelimiter("\\A").next();
+							scanner.close();
+							
+							JSONObject json2 = new JSONObject(jsonresults);
+							JSONArray values2 = json2.getJSONArray("User");
+							JSONObject person = values2.getJSONObject(0);
+							friend = person.getString("Firstname");
+							friend += " " + person.getString("Lastname");
+							
+							
+						}
+						friends[j].setName(friend);
+						friends[j].setID(id);	
+						
+					}
+					stuff[i].setFriends(friends);
+					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -129,14 +194,12 @@ public class Groups extends ActionBarActivity {
 		protected void onPostExecute(Group[] result) {
 			// TODO Auto-generated method stub
 			
+			
 			progress.setVisibility(View.INVISIBLE);
 			list.setVisibility(View.VISIBLE);
 			
 			GroupAdapter adapter = new GroupAdapter(context, result);
 			list.setAdapter(adapter);
-			
-			
-			
 			super.onPostExecute(result);
 		}
 		
