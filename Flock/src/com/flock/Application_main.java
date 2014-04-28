@@ -37,12 +37,12 @@ public class Application_main extends ActionBarActivity {
     }
 
     public void toGroups(View view){
-    	/*
+    	
     	Intent moveToGroups = new Intent(this, Groups.class);
     	startActivity(moveToGroups);
-    	*/
     	
-    	UserData temp = UserData.getInstance();
+    	
+    	
     	
     	
     	

@@ -114,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String response) {
 
-			if(response.contentEquals("error_username_doesnt_exists") ){
+			if(response.contentEquals("error_username_doesnt_exists") || response.contentEquals("null")){
 				
 				CharSequence text = "Login issue, please try again";
 				int duration = Toast.LENGTH_SHORT;
