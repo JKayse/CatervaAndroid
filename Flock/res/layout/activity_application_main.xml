@@ -12,9 +12,10 @@
        android:layout_height="150dp"
        android:layout_marginTop="20dp"
        android:layout_marginBottom="40dp"
-       android:src="@drawable/flock_mobile_image" 
+       android:src="@drawable/friend_button_image" 
        android:id="@+id/add_friends_button"
-       android:layout_centerHorizontal="true"/>
+       android:layout_centerHorizontal="true"
+       android:onClick="toAddFriend"/>
 
        <Button
            android:id="@+id/events_button"

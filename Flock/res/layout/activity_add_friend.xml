@@ -1,8 +1,58 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/add_friend_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.flock.AddFriend"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_layout">"
+
+        <Button
+            android:id="@+id/addByNameButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Friend by Username" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/byName" 
+        android:visibility="gone">
+        
+        <EditText
+            android:id="@+id/submit_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Friend&apos;s Username" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/submit_username"
+            android:text="Submit" />
+        
+    </RelativeLayout>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </FrameLayout>
 

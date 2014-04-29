@@ -24,6 +24,12 @@ public class Application_main extends ActionBarActivity {
 		setContentView(R.layout.activity_application_main);
 	}
 	
+	public void toAddFriend(View view){
+		Intent moveToAddFriend = new Intent(this, AddFriend.class);
+		startActivity(moveToAddFriend);
+		
+	}
+	
 	public void toEvents(View view){
 		Intent moveToEvent = new Intent(this,Events.class  );
 		startActivity(moveToEvent);
