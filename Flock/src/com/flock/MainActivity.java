@@ -51,6 +51,16 @@ public class MainActivity extends ActionBarActivity {
     	 String username = usernameField.getText().toString();
     	 String password = passwordField.getText().toString();
     	 Log.d("status", "TrYING");
+    	 if(username.length() == 0){
+    		 Toast toast = Toast.makeText(this, "Enter a username.", 5000);
+			 toast.show();
+			 return;
+    	 }
+    	 else if(password.length() < 8){
+    		 Toast toast = Toast.makeText(this, "The password must be at least 8 characters long.", 5000);
+			 toast.show();
+			 return;
+    	 }
     	
     	new loginRequest(getApplicationContext()).execute(username, password);
     	
@@ -114,14 +124,21 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String response) {
 
-			if(response.contentEquals("error_username_doesnt_exists") || response.contentEquals("null")){
+			if(response.contentEquals("error_username_doesnt_exists")){
 				
-				CharSequence text = "Login issue, please try again";
+				CharSequence text = "The username entered does not exist. Try Again.";
 				int duration = Toast.LENGTH_SHORT;
 
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
-			} else {
+			} else if(response.contentEquals("null")){
+				CharSequence text = "The password entered was not correct. Try Again.";
+				int duration = Toast.LENGTH_SHORT;
+
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+			}
+			else {
 
 				JSONObject back = null;
 				try {

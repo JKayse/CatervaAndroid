@@ -61,7 +61,36 @@ public class Registration extends ActionBarActivity {
    	  String newPass2=verifypasswordField.getText().toString();
    	 
    	  //TODO valadation goes here
-   	 
+   	if(newUserName.length() == 0){
+		 Toast toast = Toast.makeText(this, "Enter a username.", 5000);
+		 toast.show();
+		 return;
+	 }
+   	else if(newFName.length() == 0){
+		 Toast toast = Toast.makeText(this, "Enter your first name.", 5000);
+		 toast.show();
+		 return;
+	 }
+   	else if(newLName.length() == 0){
+		 Toast toast = Toast.makeText(this, "Enter your last name.", 5000);
+		 toast.show();
+		 return;
+	 }
+	 else if(newEMail.length() == 0 || !newEMail.contains("@")){
+		 Toast toast = Toast.makeText(this, "The email must be valid.", 5000);
+		 toast.show();
+		 return;
+	 }
+	 else if(newPass.length() < 8 || newPass2.length() < 8){
+		 Toast toast = Toast.makeText(this, "The password must be at least 8 characters long.", 5000);
+		 toast.show();
+		 return;
+	 }
+	 else if(!newPass.equals(newPass2)){
+		 Toast toast = Toast.makeText(this, "The two passwords must match.", 5000);
+		 toast.show();
+		 return;
+	 }
    	 
    	
    	  new registerRequest(getApplicationContext()).execute(newUserName,  newFName, newLName, newEMail, newPass );
@@ -122,22 +151,24 @@ public class Registration extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String response) {
 			CharSequence text = "";
-			if(response == "error_username"){
+			Log.d("JLK", response);
+			if(response.equals("error_username")){
 				
-				text = "Username is taken";
+				text = "This username already exists.";
 				
 				
+			}else if(response.equals("error_email")){
+				text = "This email already exists.";
 			}else{
 				 text = "Success! Login to continue";
 				
 			}
-			Log.d("out",response);
 			
 			int duration = Toast.LENGTH_LONG;
 
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
-			
+			return;
 			
 			
 	     }  //end of onPostExecute

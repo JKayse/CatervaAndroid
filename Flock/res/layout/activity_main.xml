@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d8f4ff"
-    >
+    android:background="#d8f4ff" >
 
    <ImageView
        android:layout_width="100dp"
@@ -19,11 +18,10 @@
         android:hint="@string/username_placeholder"
         android:layout_below="@+id/icon"
         android:layout_centerHorizontal="true"
-	   android:layout_marginRight="20dp"
-	   android:layout_marginLeft="20dp"
-	   android:layout_marginTop="10dp"
-        >
-   </EditText>
+	   	android:layout_marginRight="20dp"
+	   	android:layout_marginLeft="20dp"
+	  	android:layout_marginTop="10dp"
+	  	android:singleLine="true" />
 
    <EditText
        android:id="@+id/password_placeholder"
@@ -31,11 +29,11 @@
        android:layout_height="wrap_content"      
        android:hint="@string/password_placeholder"
        android:inputType="textPassword"
+       android:singleLine="true"
 	   android:layout_centerHorizontal="true"
 	   android:layout_below="@+id/username_placeholder"
 	   android:layout_marginRight="20dp"
-	   android:layout_marginLeft="20dp"
-	   ></EditText>
+	   android:layout_marginLeft="20dp" />
    
    
   
