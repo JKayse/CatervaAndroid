@@ -38,7 +38,7 @@
         </activity>
         <activity
             android:name="com.flock.EventInfo"
-            android:label="@string/title_activity_event_info">
+            android:label="@string/title_activity_event_info" >
         </activity>
         <activity
             android:name="com.flock.Events"
@@ -51,6 +51,10 @@
         <activity
             android:name="com.flock.Friends"
             android:label="@string/title_activity_friends" >
+        </activity>
+        <activity
+            android:name="com.flock.ViewProfile"
+            android:label="@string/title_activity_view_profile" >
         </activity>
     </application>
 

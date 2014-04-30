@@ -4,12 +4,17 @@ import com.flock.Friend;
 import com.flock.R;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.webkit.WebView.FindListener;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
@@ -35,9 +40,33 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
 		TextView txt = (TextView) view.findViewById(R.id.friendname);
 		
 		txt.setText(getItem(position).getName().toString());
+		view.setOnClickListener(new toProfile(position));
 		
 		return view;
 	}
+	
+	class toProfile implements OnClickListener{
+		int position;
+		
+		toProfile(int pos){
+			position = pos;
+		}
+
+		@Override
+		public void onClick(View v) {
+			Context here = getContext();
+			Intent toProfile = new Intent(here, ViewProfile.class);
+			Bundle data = new Bundle();
+			data.putString("userId", getItem(position).mID.toString() );
+			toProfile.putExtras(data);
+			here.startActivity(toProfile);
+			
+		}
+		
+	}
+	
+	
+	
 	
 	
 	

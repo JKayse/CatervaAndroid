@@ -1000,7 +1000,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050068;
+        public static final int action_settings=0x7f05006d;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int addByNameButton=0x7f05003e;
         public static final int add_friend_container=0x7f05003c;
@@ -1018,24 +1018,26 @@ containing a value of this type.
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
         public static final int edit_query=0x7f050030;
+        public static final int email=0x7f050065;
         public static final int end=0x7f050013;
         public static final int endDate=0x7f05004a;
         public static final int endTime=0x7f05004b;
-        public static final int eventHost=0x7f050063;
+        public static final int eventHost=0x7f050068;
         public static final int eventName=0x7f050046;
-        public static final int eventStart=0x7f050062;
+        public static final int eventStart=0x7f050067;
         public static final int events_button=0x7f050043;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
-        public static final int friendName=0x7f050066;
-        public static final int friendPhoto=0x7f050064;
-        public static final int friendname=0x7f050065;
+        public static final int first_name=0x7f050062;
+        public static final int friendName=0x7f05006b;
+        public static final int friendPhoto=0x7f050069;
+        public static final int friendname=0x7f05006a;
         public static final int friends_button=0x7f050044;
         public static final int friends_list=0x7f050052;
         public static final int friends_progress=0x7f050051;
         public static final int group_list=0x7f050054;
         public static final int group_progress=0x7f050053;
-        public static final int groupname=0x7f050067;
+        public static final int groupname=0x7f05006c;
         public static final int groups_button=0x7f050045;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
@@ -1043,8 +1045,9 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int imageView=0x7f050061;
+        public static final int imageView=0x7f050066;
         public static final int join_text=0x7f050058;
+        public static final int last_name=0x7f050063;
         public static final int list=0x7f050050;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
@@ -1061,6 +1064,7 @@ containing a value of this type.
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int password_placeholder=0x7f050056;
+        public static final int photo=0x7f050061;
         public static final int progress=0x7f05004f;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
@@ -1092,6 +1096,7 @@ containing a value of this type.
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
+        public static final int user_name=0x7f050064;
         public static final int username_placeholder=0x7f050055;
         public static final int withText=0x7f05000c;
     }
@@ -1152,12 +1157,13 @@ containing a value of this type.
         public static final int activity_groups=0x7f03001c;
         public static final int activity_main=0x7f03001d;
         public static final int activity_registration=0x7f03001e;
-        public static final int event_item=0x7f03001f;
-        public static final int fragment_main=0x7f030020;
-        public static final int friend_item=0x7f030021;
-        public static final int group_friend_item=0x7f030022;
-        public static final int group_item=0x7f030023;
-        public static final int support_simple_spinner_dropdown_item=0x7f030024;
+        public static final int activity_view_profile=0x7f03001f;
+        public static final int event_item=0x7f030020;
+        public static final int fragment_main=0x7f030021;
+        public static final int friend_item=0x7f030022;
+        public static final int group_friend_item=0x7f030023;
+        public static final int group_item=0x7f030024;
+        public static final int support_simple_spinner_dropdown_item=0x7f030025;
     }
     public static final class menu {
         public static final int add_friend=0x7f0c0000;
@@ -1167,6 +1173,7 @@ containing a value of this type.
         public static final int groups=0x7f0c0004;
         public static final int main=0x7f0c0005;
         public static final int registration=0x7f0c0006;
+        public static final int view_profile=0x7f0c0007;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1236,6 +1243,7 @@ containing a value of this type.
         public static final int title_activity_friends=0x7f0a0028;
         public static final int title_activity_groups=0x7f0a0027;
         public static final int title_activity_registration=0x7f0a0014;
+        public static final int title_activity_view_profile=0x7f0a0029;
         public static final int username_placeholder=0x7f0a0011;
     }
     public static final class style {

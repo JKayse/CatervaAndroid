@@ -29,5 +29,6 @@
     <string name="add_friends_button">Add Friends</string>
     <string name="title_activity_groups">Groups</string>
     <string name="title_activity_friends">Friends</string>
+    <string name="title_activity_view_profile">ViewProfile</string>
 
 </resources>

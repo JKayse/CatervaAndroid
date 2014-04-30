@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,13 @@ public class GroupAdapter  extends BaseExpandableListAdapter {
 				String currentId = currentFriend.getID();
 				Toast toast = Toast.makeText(context, currentFriend.getID(), 5000);
 				toast.show();
+				Intent toProfile = new Intent(v.getContext(), ViewProfile.class);
+				Bundle data = new Bundle();
+				data.putString("userId", currentId);
+				toProfile.putExtras(data);
+				v.getContext().startActivity(toProfile);
+				
+				
 			}
 		});
         return convertView;
