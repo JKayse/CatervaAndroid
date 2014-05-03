@@ -25,6 +25,7 @@ import android.R.string;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -45,13 +46,15 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.os.Build;
 
-public class AddFriend extends ActionBarActivity {
+public class AddFriend extends Activity {
 	NfcAdapter mNfcAdapter;
 	PendingIntent mNfcPendingIntent;
 	IntentFilter [] mNdefExchangeFilters;
 	UserData mUser;
 	
-	
+	protected void onNewIntent() {
+		
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +84,8 @@ public class AddFriend extends ActionBarActivity {
     		
     		mNfcAdapter.setNdefPushMessage(message, this);
     		mNfcPendingIntent=  PendingIntent.getActivity(this, 0,   new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-    	    mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, 
-    	        mNdefExchangeFilters, null);
+    	    //mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, 
+    	       //  mNdefExchangeFilters, null);
             
             
         } else {
