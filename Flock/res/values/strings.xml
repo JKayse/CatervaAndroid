@@ -30,5 +30,6 @@
     <string name="title_activity_groups">Groups</string>
     <string name="title_activity_friends">Friends</string>
     <string name="title_activity_view_profile">ViewProfile</string>
+    <string name="title_activity_nfc_add_friends">NfcAddFriendsActivity</string>
 
 </resources>

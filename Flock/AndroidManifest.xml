@@ -9,6 +9,11 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -55,6 +60,10 @@
         <activity
             android:name="com.flock.ViewProfile"
             android:label="@string/title_activity_view_profile" >
+        </activity>
+        <activity
+            android:name="com.flock.NfcAddFriendsActivity"
+            android:label="@string/title_activity_nfc_add_friends" >
         </activity>
     </application>
 
