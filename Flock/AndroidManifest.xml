@@ -35,6 +35,11 @@
         <activity
             android:name="com.flock.AddFriend"
             android:label="@string/title_activity_add_friend" >
+            <intent-filter>
+    			<action android:name="android.nfc.action.NDEF_DISCOVERED" />
+    			<category android:name="android.intent.category.DEFAULT" />
+   				<data android:pathPrefix="/store/apps/details?id=com.flock" />
+ 			</intent-filter>
         </activity>
         <activity
             android:name="com.flock.EventInfo"

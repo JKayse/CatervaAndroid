@@ -175,7 +175,7 @@ public class AddFriend extends Activity {
 	
 	class addFriendByName extends AsyncTask<String, Void, Void>{
 		String url = "http://54.200.98.199/flock/api/SearchFriend";
-		String addUrl = "http://54.200.98.199/flock/api/AndroidAddFriendRequest";
+		String addUrl = "http://54.200.98.199/flock/api/AddFriendRequest";
 
 		@Override
 		protected Void doInBackground(String... params) {

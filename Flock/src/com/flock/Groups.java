@@ -33,7 +33,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 public class Groups extends ActionBarActivity {
-	String mainURL =  "http://54.200.98.199/flock/api/AndroidGroups";
+	String mainURL =  "http://54.200.98.199/flock/api/Groups";
 	getGroups task = null;
 	ExpandableListView list;
 	ProgressBar progress;

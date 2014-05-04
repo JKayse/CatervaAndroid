@@ -40,7 +40,7 @@ import android.widget.ProgressBar;
 import android.os.Build;
 
 public class Friends extends ActionBarActivity {
-	String mainURL = "http://54.200.98.199/flock/api/AndroidViewFriends";
+	String mainURL = "http://54.200.98.199/flock/api/ViewFriends";
 	getFriends task =null;
 	ListView list;
 	ProgressBar progress;

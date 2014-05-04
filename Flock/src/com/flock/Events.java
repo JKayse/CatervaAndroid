@@ -25,7 +25,7 @@ import android.widget.ProgressBar;
 
 public class Events extends ActionBarActivity {
 
-	String mainURL = "http://54.200.98.199/flock/api/AndroidEvents";
+	String mainURL = "http://54.200.98.199/flock/api/Events";
 	DownloadJson task = new DownloadJson(this);
 	ListView list;
 	ProgressBar progress;
@@ -98,7 +98,7 @@ public class Events extends ActionBarActivity {
 				UserData temp = UserData.getInstance();
 				Integer id = temp.getUserId();
 				String userid = id.toString();
-				String urlParameters = "userId="+userid;
+				String urlParameters = "id="+userid;
 				try {
 					connection.getOutputStream().write(urlParameters.getBytes());
 				} catch (IOException e2) {

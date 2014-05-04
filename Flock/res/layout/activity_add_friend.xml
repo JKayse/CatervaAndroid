@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Friend by Username" 
-            android:layout_below="@+id/icon"
             android:layout_margin="5dp"
             android:textColor="#FFF"
             android:background="@drawable/button_item"/>
