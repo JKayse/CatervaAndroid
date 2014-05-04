@@ -4,18 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.flock.AddFriend"
-    tools:ignore="MergeRootFrame" >
+    tools:ignore="MergeRootFrame"
+    android:background="#d8f4ff" >
     
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_layout">"
-
+        android:id="@+id/main_layout">
         <Button
             android:id="@+id/addByNameButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Friend by Username" />
+            android:text="Add Friend by Username" 
+            android:layout_below="@+id/icon"
+            android:layout_margin="5dp"
+            android:textColor="#FFF"
+            android:background="@drawable/button_item"/>
         
 
     </RelativeLayout>

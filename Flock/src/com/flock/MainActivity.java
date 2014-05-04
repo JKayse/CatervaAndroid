@@ -52,13 +52,11 @@ public class MainActivity extends ActionBarActivity {
     	 String password = passwordField.getText().toString();
     	 Log.d("status", "TrYING");
     	 if(username.length() == 0){
-    		 Toast toast = Toast.makeText(this, "Enter a username.", 5000);
-			 toast.show();
+    		 usernameField.setError("Enter a username.");
 			 return;
     	 }
     	 else if(password.length() < 8){
-    		 Toast toast = Toast.makeText(this, "The password must be at least 8 characters long.", 5000);
-			 toast.show();
+    		 passwordField.setError("The password must be at least 8 characters long.");
 			 return;
     	 }
     	

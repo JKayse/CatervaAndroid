@@ -8,22 +8,14 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.os.Build;
 
 public class ViewProfile extends ActionBarActivity {
 
@@ -48,7 +40,8 @@ public class ViewProfile extends ActionBarActivity {
 		String nUser = "Error";
 		String nEmail = "Error";
 		String nDesc = "Error";
-
+		String nCompleteName = "Error";
+		String nImageName = "Error";
 		@Override
 		protected Void doInBackground(String... params) {
 			
@@ -72,6 +65,11 @@ public class ViewProfile extends ActionBarActivity {
 				nUser = tempHolder.getString("Username");
 				nEmail = tempHolder.getString("Email");
 				nDesc = tempHolder.getString("Description");
+				nImageName = tempHolder.getString("PictureName");
+				nCompleteName = nFirst + " " + nLast + "'s Profile";
+				if(nDesc.equals("null")){
+					nDesc = "None";
+				}
 				
 			}catch(Exception e){
 				
@@ -85,19 +83,22 @@ public class ViewProfile extends ActionBarActivity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			
-			TextView first = (TextView)findViewById(R.id.first_name);
-			TextView last = (TextView) findViewById(R.id.last_name);
+			TextView complete = (TextView)findViewById(R.id.completeName);
 			TextView user =(TextView)findViewById(R.id.user_name);
 			TextView email = (TextView)findViewById(R.id.email);
 			TextView desc = (TextView)findViewById(R.id.description);
+			View container = (View)findViewById(R.id.mainInfo);
+			ProgressBar progress = (ProgressBar)findViewById(R.id.progress);
 			
 			
 
-			first.setText(nFirst);
-			last.setText(nLast);
-			user.setText(nUser);
-			email.setText(nEmail);
+			complete.setText(nCompleteName);
+			user.setText("Username: " + nUser);
+			email.setText("Email: " + nEmail);
 			desc.setText(nDesc);
+			container.setVisibility(View.VISIBLE);
+			progress.setVisibility(View.GONE);
+			
 			
 			
 			
@@ -105,9 +106,6 @@ public class ViewProfile extends ActionBarActivity {
 		}
 		
 	}
-	
-	
-	
 
 	
 }

@@ -9,11 +9,6 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.NFC" />
-
-    <uses-feature
-        android:name="android.hardware.nfc"
-        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -40,14 +35,6 @@
         <activity
             android:name="com.flock.AddFriend"
             android:label="@string/title_activity_add_friend" >
-            
-             <intent-filter>
-    			<action android:name="android.nfc.action.NDEF_DISCOVERED" />
-    			<category android:name="android.intent.category.DEFAULT" />
-    			<data android:pathPrefix="/store/apps/details?id=com.flock" />
-			</intent-filter>
-            
-            
         </activity>
         <activity
             android:name="com.flock.EventInfo"
@@ -70,7 +57,7 @@
             android:label="@string/title_activity_view_profile" >
         </activity>
         <activity
-            android:name="com.flock.NfcAddFriendsActivity"
+            android:name="com.flock.NfcAddFriends"
             android:label="@string/title_activity_nfc_add_friends" >
         </activity>
     </application>

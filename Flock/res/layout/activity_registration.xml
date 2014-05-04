@@ -65,7 +65,9 @@
  	    android:layout_below="@+id/new_password_confirm"
  	    android:text="@string/sign_up_button"
  	    android:layout_margin="10dp"
- 	    android:onClick="registerAttempt" />
+        android:textColor="#FFF"
+ 	    android:onClick="registerAttempt"
+ 	    android:background="@drawable/button_item" />
    
   
    

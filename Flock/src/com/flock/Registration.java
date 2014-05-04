@@ -36,7 +36,14 @@ import android.widget.Toast;
 import android.os.Build;
 
 public class Registration extends ActionBarActivity {
-
+	
+	 EditText usernameField;
+  	 EditText fnameField;
+  	 EditText lanemField;
+  	 EditText emailField;
+  	 EditText passwordField;
+  	 EditText verifypasswordField;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,12 +52,12 @@ public class Registration extends ActionBarActivity {
 	}
 	
 	public void registerAttempt(View view){
-   	 EditText usernameField = (EditText)findViewById(R.id.new_username);
-   	 EditText fnameField = (EditText)findViewById(R.id.new_first_name);
-   	 EditText lanemField = (EditText)findViewById(R.id.new_last_name);
-   	 EditText emailField = (EditText)findViewById(R.id.new_email);
-   	 EditText passwordField = (EditText)findViewById(R.id.new_password);
-   	 EditText verifypasswordField = (EditText)findViewById(R.id.new_password_confirm);
+   	 usernameField = (EditText)findViewById(R.id.new_username);
+   	 fnameField = (EditText)findViewById(R.id.new_first_name);
+   	 lanemField = (EditText)findViewById(R.id.new_last_name);
+   	 emailField = (EditText)findViewById(R.id.new_email);
+   	 passwordField = (EditText)findViewById(R.id.new_password);
+   	 verifypasswordField = (EditText)findViewById(R.id.new_password_confirm);
    	 
    	 
    	  String newUserName=usernameField.getText().toString();
@@ -62,33 +69,31 @@ public class Registration extends ActionBarActivity {
    	 
    	  //TODO valadation goes here
    	if(newUserName.length() == 0){
-		 Toast toast = Toast.makeText(this, "Enter a username.", 5000);
-		 toast.show();
+   		 usernameField.setError("Enter a username.");
 		 return;
 	 }
    	else if(newFName.length() == 0){
-		 Toast toast = Toast.makeText(this, "Enter your first name.", 5000);
-		 toast.show();
+   		 fnameField.setError("Enter your first name.");
 		 return;
 	 }
    	else if(newLName.length() == 0){
-		 Toast toast = Toast.makeText(this, "Enter your last name.", 5000);
-		 toast.show();
+   		 lanemField.setError("Enter your last name.");
 		 return;
 	 }
 	 else if(newEMail.length() == 0 || !newEMail.contains("@")){
-		 Toast toast = Toast.makeText(this, "The email must be valid.", 5000);
-		 toast.show();
+		 emailField.setError("The email must be valid.");
 		 return;
 	 }
-	 else if(newPass.length() < 8 || newPass2.length() < 8){
-		 Toast toast = Toast.makeText(this, "The password must be at least 8 characters long.", 5000);
-		 toast.show();
+	 else if(newPass.length() < 8){
+		 passwordField.setError("The password must be at least 8 characters long.");
+		 return;
+	 }
+	 else if(newPass2.length() < 8){
+		 verifypasswordField.setError("The password must be at least 8 characters long.");
 		 return;
 	 }
 	 else if(!newPass.equals(newPass2)){
-		 Toast toast = Toast.makeText(this, "The two passwords must match.", 5000);
-		 toast.show();
+		 verifypasswordField.setError("The two passwords must match.");
 		 return;
 	 }
    	 
@@ -153,21 +158,18 @@ public class Registration extends ActionBarActivity {
 			CharSequence text = "";
 			Log.d("JLK", response);
 			if(response.equals("error_username")){
-				
-				text = "This username already exists.";
-				
-				
+				usernameField.setError("This username already exists.");		
 			}else if(response.equals("error_email")){
-				text = "This email already exists.";
+				emailField.setError("This email already exists.");
 			}else{
 				 text = "Success! Login to continue";
+				 int duration = Toast.LENGTH_LONG;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
 				
 			}
 			
-			int duration = Toast.LENGTH_LONG;
-
-			Toast toast = Toast.makeText(context, text, duration);
-			toast.show();
+			
 			return;
 			
 			

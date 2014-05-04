@@ -46,8 +46,6 @@ public class GroupAdapter  extends BaseExpandableListAdapter {
 			@Override
 			public void onClick(View v) {
 				String currentId = currentFriend.getID();
-				Toast toast = Toast.makeText(context, currentFriend.getID(), 5000);
-				toast.show();
 				Intent toProfile = new Intent(v.getContext(), ViewProfile.class);
 				Bundle data = new Bundle();
 				data.putString("userId", currentId);

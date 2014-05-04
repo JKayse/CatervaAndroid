@@ -46,6 +46,9 @@
        android:layout_alignStart="@+id/password_placeholder"
        android:layout_centerHorizontal="true"
        android:onClick="loginAttempt"
+       android:layout_margin="5dp"
+       android:textColor="#FFF"
+       android:background="@drawable/button_item"
       ></Button>
    
    
@@ -68,6 +71,9 @@
        android:layout_centerHorizontal="true"
        android:layout_alignParentBottom="true"
        android:onClick="registerNew"
+       android:layout_margin="5dp"
+       android:textColor="#FFF"
+       android:background="@drawable/button_item"
       ></Button>
   
     

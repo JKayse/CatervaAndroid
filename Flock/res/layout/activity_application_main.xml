@@ -24,7 +24,10 @@
            android:layout_centerHorizontal="true"
            android:text="@string/events_button"
            android:layout_below="@+id/add_friends_button" 
-           android:onClick="toEvents"/>
+           android:onClick="toEvents"
+           android:layout_margin="5dp"
+           android:textColor="#FFF"
+           android:background="@drawable/button_item"/>
 
      
 
@@ -33,18 +36,24 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:onClick="toFriends"
+           android:layout_margin="5dp"
+           android:textColor="#FFF"
            android:layout_centerHorizontal="true"
            android:layout_below="@+id/events_button"
-           android:text="@string/friends_button" />
+           android:text="@string/friends_button"
+           android:background="@drawable/button_item" />
        
          <Button
            android:id="@+id/groups_button"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:onClick="toGroups"
+           android:layout_margin="5dp"
+           android:textColor="#FFF"
            android:layout_centerHorizontal="true"
            android:layout_below="@+id/friends_button"
-           android:text="@string/groups_button" />
+           android:text="@string/groups_button" 
+           android:background="@drawable/button_item"/>
     
 </RelativeLayout>
 
