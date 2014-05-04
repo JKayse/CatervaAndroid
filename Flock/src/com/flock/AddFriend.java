@@ -35,6 +35,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,6 +45,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import android.os.Build;
 
 public class AddFriend extends Activity {
@@ -52,8 +54,35 @@ public class AddFriend extends Activity {
 	IntentFilter [] mNdefExchangeFilters;
 	UserData mUser;
 	
-	protected void onNewIntent() {
+	
+	@Override
+	protected void onNewIntent(Intent intent) {
+		Log.d("TGE", "here!!!");
+		Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
+                NfcAdapter.EXTRA_NDEF_MESSAGES);
 		
+		NdefMessage msg = (NdefMessage) rawMsgs[0];
+		String id = new String(msg.getRecords()[0].getPayload()) ; 
+		String username = new String(msg.getRecords()[1].getPayload());
+		
+		username = username.substring(3, username.length());
+		id = id.substring(3, id.length());
+		
+		
+		
+		Toast.makeText(getBaseContext(), "Sending Friend Request to" + username, Toast.LENGTH_LONG).show();
+		
+		Log.d("TGE", username);
+		addFriendByName addFriend = new addFriendByName();
+		addFriend.execute(username);
+		Log.d("TGE", id );
+	}
+	
+	@Override
+	protected void onResume(){
+		super.onResume(); 
+		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+		mNfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
 	}
 
 	@Override
