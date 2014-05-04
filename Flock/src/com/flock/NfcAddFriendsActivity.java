@@ -36,7 +36,7 @@ public class NfcAddFriendsActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_nfc_add_friends);
 		//get data
 		mUser = UserData.getInstance();
-		
+
 		//set up NFC 
 		mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 		mNfcPendingIntent = PendingIntent.getActivity(this, 0,
@@ -48,26 +48,26 @@ public class NfcAddFriendsActivity extends ActionBarActivity {
 		} catch (MalformedMimeTypeException e) {
 		}
 		mNdefExchangeFilters = new IntentFilter[] { ndefDetected };
-		
+
 	}
 
-	
+
 	private void enableNdefExchangeMode() {
-		
+
 		NdefMessage message = new NdefMessage(
 				new NdefRecord [] {
 				createTextRecord(Integer.toString(mUser.getUserId() ), Locale.US, true),
 				createTextRecord(mUser.getUsername(), Locale.US, true)
 				});
-		
-		
-		
+
+
+
 		mNfcAdapter.setNdefPushMessage(message, NfcAddFriendsActivity.this);
 
 	    mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, 
 	        mNdefExchangeFilters, null);
 	}
-	
+
 	@Override
 	protected void onNewIntent(Intent intent) {
 	    // NDEF exchange mode
@@ -77,10 +77,10 @@ public class NfcAddFriendsActivity extends ActionBarActivity {
 	        Toast.makeText(this, "sent friend request via nfc!", Toast.LENGTH_LONG).show();
 	    }
 	}
-	
+
 	private void fireFriendRequest(NdefMessage ndefMessage) {
 		// TODO THIS WILL ASYNC MAKE FRIEND REQUEST
-		
+
 	}
 
 
@@ -115,7 +115,7 @@ public class NfcAddFriendsActivity extends ActionBarActivity {
 	    }
 	    return msgs;
 	}
-	
+
 	public NdefRecord createTextRecord(String payload, Locale locale, boolean encodeInUtf8) {
 	    byte[] langBytes = locale.getLanguage().getBytes(Charset.forName("US-ASCII"));
 	    Charset utfEncoding = encodeInUtf8 ? Charset.forName("UTF-8") : Charset.forName("UTF-16");
@@ -130,6 +130,6 @@ public class NfcAddFriendsActivity extends ActionBarActivity {
 	    NdefRecord.RTD_TEXT, new byte[0], data);
 	    return record;
 	}
-	
-	
+
+
 }

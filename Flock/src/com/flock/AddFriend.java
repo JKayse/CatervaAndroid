@@ -53,50 +53,55 @@ public class AddFriend extends Activity {
 	PendingIntent mNfcPendingIntent;
 	IntentFilter [] mNdefExchangeFilters;
 	UserData mUser;
-	
-	
+
+
 	@Override
 	protected void onNewIntent(Intent intent) {
 		Log.d("TGE", "here!!!");
 		Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
                 NfcAdapter.EXTRA_NDEF_MESSAGES);
-		
+
 		NdefMessage msg = (NdefMessage) rawMsgs[0];
 		String id = new String(msg.getRecords()[0].getPayload()) ; 
 		String username = new String(msg.getRecords()[1].getPayload());
-		
+
 		username = username.substring(3, username.length());
 		id = id.substring(3, id.length());
-		
-		
-		
+
+
+
 		Toast.makeText(getBaseContext(), "Sending Friend Request to" + username, Toast.LENGTH_LONG).show();
-		
+
 		Log.d("TGE", username);
 		addFriendByName addFriend = new addFriendByName();
 		addFriend.execute(username);
 		Log.d("TGE", id );
 	}
-	
+
 	@Override
 	protected void onResume(){
 		super.onResume(); 
 		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-		mNfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
+		if (mNfcAdapter != null && mNfcAdapter.isEnabled()) {
+			mNfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
+		}
+		else{
+			;
+		}
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_friend);
-		
+
 		findViewById(R.id.addByNameButton).setOnClickListener(new onUserName());
 		findViewById(R.id.submit_button).setOnClickListener(new searchUsername());
-		
+
 		mUser = UserData.getInstance();
-		
-		
-		
+
+
+
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         
         if (mNfcAdapter != null && mNfcAdapter.isEnabled()) {
@@ -129,33 +134,33 @@ public class AddFriend extends Activity {
     	} catch (MalformedMimeTypeException e) {
     	}
     	mNdefExchangeFilters = new IntentFilter[] { ndefDetected };
-		
+
 
 	}
-	
 
-	
+
+
 	void searchForName(){
-		
+
 	}
 	class searchUsername implements OnClickListener{
 
 		@Override
 		public void onClick(View v) {
 			EditText username = (EditText) findViewById(R.id.submit_username);
-			
+
 			String text = null;
 			text = username.getText().toString();
-			
+
 			if(!text.isEmpty()){
 				addFriendByName add = new addFriendByName();
 				add.execute(text);
 			} else {
 				username.setError("Please enter a username");
 			}
-			
+
 		}
-		
+
 	}
 	class onUserName implements OnClickListener{
 
@@ -163,51 +168,51 @@ public class AddFriend extends Activity {
 		public void onClick(View v) {
 			RelativeLayout main = (RelativeLayout) findViewById(R.id.main_layout);
 			RelativeLayout byId = (RelativeLayout) findViewById(R.id.byName);
-			
-			
+
+
 			main.setVisibility(View.GONE);
 			byId.setVisibility(View.VISIBLE);
-			
+
 		}
-		
-		
+
+
 	}// end of OnUserName click
-	
+
 	class addFriendByName extends AsyncTask<String, Void, Void>{
 		String url = "http://54.200.98.199/flock/api/SearchFriend";
 		String addUrl = "http://54.200.98.199/flock/api/AddFriendRequest";
 
 		@Override
 		protected Void doInBackground(String... params) {
-			
+
 			String output = null;
 			JSONObject array = null; 
 			String user = null;
 			UserData userData = UserData.getInstance();
-			
+
 			//set up client
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost(url);
 			HttpPost addPost= new HttpPost(addUrl);
 			HttpResponse response = null;
 			HttpResponse addResponse = null;
-			
+
 
 			try{
 				//add data
 				List<NameValuePair> data = new ArrayList<NameValuePair>();
 				data.add(new BasicNameValuePair("username", params[0]));
 				post.setEntity(new UrlEncodedFormEntity(data));
-				
+
 				//execute POST request
 				response = client.execute(post);
-				
+
 				//parse data to string
 				output = EntityUtils.toString(response.getEntity());
-				
+
 				//put data in Json
 				array = new JSONObject(output);
-				
+
 				JSONArray temp =((JSONArray)array.get("Friend"));
 				if(temp.toString().contentEquals("[]")){
 					user = null;
@@ -215,77 +220,77 @@ public class AddFriend extends Activity {
 					user = ((JSONObject)temp.get(0)).getString("userId");
 				}
 				//user = temp.toString();
-				
-				
+
+
 			} catch (Exception e){
 				Log.d("TGE", "someting broke in addFriendByName while checking username");
 			}
-			
-			
-			 
+
+
+
 			if(user != null){
 				//success! add friend 
 				Log.d("TGEllingoton", user.toString() );
-				
+
 				try{
 					//add data
 					List<NameValuePair> addData = new ArrayList<NameValuePair>();
 					addData.add(new BasicNameValuePair("id", Integer.toString(userData.getUserId()) ));
 					addData.add(new BasicNameValuePair("friendId", user.toString() ));
-					
+
 					addPost.setEntity( new UrlEncodedFormEntity(addData));
-					
-					
+
+
 					//execute post
 					addResponse = client.execute(addPost);
-					
+
 					String responseString = EntityUtils.toString( addResponse.getEntity() );
 					if( responseString.isEmpty() ){
 						Log.d("TGE", "Friend added");
 					} else {
 						Log.d("TGE", "error in adding friend");
 					}
-					
+
 				} catch (Exception e){
 					Log.d("TGE", "something broke in addFriendByName while adding friend");
 				}
-				
-				
-				
-				
+
+
+
+
 			} else {
 				//TODO toast on no user
 				Log.d("TGEllingoton", "no match found" );
-				
+
 			}
-			
-			
-			
+
+
+
 			return null;
 		}
-		
-		
-		
+
+
+
 	}
-	
+
 
 	 public static NdefRecord createNewTextRecord(String text, Locale locale, boolean encodeInUtf8) {
 	        byte[] langBytes = locale.getLanguage().getBytes(Charset.forName("US-ASCII"));
-	 
+
 	        Charset utfEncoding = encodeInUtf8 ? Charset.forName("UTF-8") : Charset.forName("UTF-16");
 	        byte[] textBytes = text.getBytes(utfEncoding);
-	 
+
 	        int utfBit = encodeInUtf8 ? 0 : (1 << 7);
 	        char status = (char)(utfBit + langBytes.length);
-	 
+
 	        byte[] data = new byte[1 + langBytes.length + textBytes.length];
 	        data[0] = (byte)status;
 	        System.arraycopy(langBytes, 0, data, 1, langBytes.length);
 	        System.arraycopy(textBytes, 0, data, 1 + langBytes.length, textBytes.length);
-	 
+
 	        return new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], data);
 	    }
-	 
+
 	 public NdefRecord createTextRecord(String payload, Locale locale, boolean encodeInUtf8) {
 		    byte[] langBytes = locale.getLanguage().getBytes(Charset.forName("US-ASCII"));
 		    Charset utfEncoding = encodeInUtf8 ? Charset.forName("UTF-8") : Charset.forName("UTF-16");

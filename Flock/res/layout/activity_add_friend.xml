@@ -40,6 +40,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/submit_username"
+            android:layout_margin="5dp"
+            android:textColor="#FFF"
+            android:background="@drawable/button_item"
             android:text="Submit" />
         
 
@@ -61,4 +64,3 @@
     
     
     </FrameLayout>
-

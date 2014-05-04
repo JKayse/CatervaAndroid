@@ -27,7 +27,7 @@ public class Application_main extends ActionBarActivity {
 	public void toAddFriend(View view){
 		Intent moveToAddFriend = new Intent(this, AddFriend.class);
 		startActivity(moveToAddFriend);
-		
+
 	}
 	
 	public void toEvents(View view){
